@@ -16,7 +16,7 @@ Ensuring equal opportunities for everyone is one of the main concerns of modern 
 
 ### Contents
 This repository contains the whole code used throught my Bachelor Thesis. It is structured in two main sections:
-* `crawling/`: scripts used to retrieve data from sources and transformation. They are Python scripts that can be executed through an IDE or command line.
+* `data-acquisition/`: scripts used to retrieve data from sources and transformation. They are Python scripts that can be executed through an IDE or command line.
 * `analysis/`: notebooks to conduct experiments and analysis.
 
 Each of the folders contain a README file with further intructions on organization and execution.
