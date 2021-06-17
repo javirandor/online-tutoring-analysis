@@ -10,7 +10,7 @@ Ensuring equal opportunities for everyone is one of the main concerns of modern 
 
 ---
 
-⚠️ &nbsp; Data is not provided because it includes personal information about users. Also, output cells containing information have been deleted. If you want access, feel free to contact me. &nbsp; ⚠️
+⚠️ &nbsp; Data is not provided because it includes personal information about users. Also, output cells containing information have been deleted. If you want access to experimental data, feel free to contact me. &nbsp; ⚠️
 
 ---
 
