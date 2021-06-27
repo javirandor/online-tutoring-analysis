@@ -25,3 +25,19 @@ Each of the folders contain a README file with further intructions on organizati
 Also a PDF version of my Bachelor Thesis can be found in the main folder of this repository.
 
 ---
+
+### Ethical considerations
+(Extracted from the Thesis. I strongly request that it is respected in any extension of this work.)
+
+We conducted a risk assessment for our work in order to identify the parties that could be harmed. This section discusses ethical considerations, risks, and the implemented mitigation strategies. We identify two main groups to pay attention to: users and platforms.
+
+#### Users
+
+Preserving privacy is the main concern. We believe the risk for teachers is minimal because we use public information anyone can access. However, we infer gender without explicit consent. European legislation with respect to gender is vague and it is not considered sensitive. To preserve privacy and to prevent a person from being offended by the assignment of a certain gender, we release anonymized data that may not lead to identify an individual. As few attributes as possible are released to replicate the results. Moreover, features that might be unique such as price are rounded. Further information about data and transformations is presented in reproducibility Appendix E \[from the Thesis\].
+
+Finally, we think that users' data is analyzed for public interest and any finding in this work will be utilized to their advantage. At no point information has been used for commercial purposes.
+
+
+#### Platforms
+
+Although web scraping is not always permitted by companies, we think that obtaining information is valuable for public interest. We do it in a responsible way to ensure that it never poses a risk to the availability of their website. Since crawling rules were not specified by platforms themselves, we established conservative waiting times to avoid any type of overload in the servers.
