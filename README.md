@@ -10,13 +10,18 @@ Ensuring equal opportunities for everyone is one of the main concerns of modern 
 
 ---
 
-⚠️ &nbsp; Data is not provided because it includes personal information about users. Also, output cells containing information have been deleted. If you want access to experimental data, feel free to contact me. &nbsp; ⚠️
+⚠️ &nbsp; Released data is anonymized to avoid user identification. Also, output cells containing personal information have been deleted. If you want access to detailed experimental data, feel free to contact me. &nbsp; ⚠️
 
 ---
 
 ### Contents
-This repository contains the whole code used throught my Bachelor Thesis. It is structured in two main sections:
-* `data-acquisition/`: scripts used to retrieve data from sources and transformation. They are Python scripts that can be executed through an IDE or command line.
-* `analysis/`: notebooks to conduct experiments and analysis.
+This repository contains the whole code used throught my Bachelor Thesis. It is structured in three main sections:
+* `data-acquisition/`: Contains the Python scripts used to crawl the information from websites. Notice that sources might be updated and the provided code might be no longer useful.
+* `analysis/`: Jupyter Notebooks required to reproduce results.
+* `data/`: Anonymized datasets.
 
 Each of the folders contain a README file with further intructions on organization and execution.
+
+Also a PDF version of my Bachelor Thesis can be found in the main folder of this repository.
+
+---
