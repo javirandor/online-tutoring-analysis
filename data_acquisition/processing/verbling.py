@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import datetime
 from pathlib import Path
 import json
+from constants import DATA_PATH
 
 def visit_language(list_path: str,
                    html_path: str,
@@ -185,9 +186,9 @@ def crawl_teacher(position: int,
     return info
 
 def main():
-    list_path = "/Users/javi/Desktop/Universidad/TFG/online-tutoring-analysis/data/preply/teachers_list/"
-    html_path = "/Users/javi/Desktop/Universidad/TFG/online-tutoring-analysis/data/preply/teachers_html/"
-    output_path = "/Users/javi/Desktop/Universidad/TFG/online-tutoring-analysis/data/preply/results/"
+    list_path = os.path.join(DATA_PATH, "verbling/teachers_list/")
+    html_path = os.path.join(DATA_PATH, "verbling/teachers_html/")
+    output_path = os.path.join(DATA_PATH, "verbling/results/")
 
     languages = set([lang for lang in os.listdir(list_path) if ~lang.startswith('.')])
 
@@ -213,35 +214,4 @@ def infer_gender(df, column_name, prob_bound, img_url_col, images_path):
     return result
 
 if __name__ == "__main__":
-    list_path = "/Users/javi/Desktop/Universidad/TFG/online-tutoring-analysis/data/verbling/teachers_list/"
-    html_path = "/Users/javi/Desktop/Universidad/TFG/online-tutoring-analysis/data/verbling/teachers_html/"
-    output_path = "/Users/javi/Desktop/Universidad/TFG/online-tutoring-analysis/data/verbling/results/"
-
-    languages = set([lang for lang in os.listdir(list_path) if lang!='.DS_Store'])
-
-    for language in languages:
-        df = visit_language(list_path, html_path, language)
-        Path(output_path+language).mkdir(parents=True, exist_ok=True)
-        df.to_csv(output_path+language+"/{}.csv".format(datetime.datetime.today().strftime('%Y%m%d')))
-
-    """
-    path = "/Users/javirando/Desktop/Universidad/TFG/online-tutoring-analysis/data/verbling/verbling_teachers_english_50_03092020.json"
-    data_path = "/Users/javirando/Desktop/Universidad/TFG/online-tutoring-analysis/data/verbling/"
-    img_path = data_path + "images/avatar/"
-
-    teachers = read_teachers(path)
-
-    bot = create_chrome_bot()
-    teachers_info = obtain_teachers_info(teachers, bot)
-
-    df = pd.DataFrame(teachers_info)
-
-    df = clean_name(df, "user_name", "user_name_clean", ['teacher', 'IELTS', '|'])
-
-    df_gender = infer_gender(df, "user_name_clean", 0.75, "avatar_url", img_path)
-
-    df_gender = consolidate_gender(df=df_gender, gender_img_column='gender_img', gender_name_column='gender_name', gender_name_prob='gender_name_prob', prob_bound=0.75)
-
-    index = 1
-    df_gender.to_csv("/Users/javirando/Desktop/Universidad/TFG/online-tutoring-analysis/data/rankings/verbling_english_{}.csv".format(index))
-    """
+    main()

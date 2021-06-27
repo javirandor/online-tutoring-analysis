@@ -9,6 +9,7 @@ from pathlib import Path
 import time
 from crawlers.utils import get_url, create_chrome_bot
 from random import uniform
+from constants import DATA_PATH
 
 
 def get_languages(bot):
@@ -149,9 +150,8 @@ def run_crawler(languages_url, crawling_size, storing_path, done=set([])):
 
 if __name__ == "__main__":
 
-    languges_of_interest = pd.read_csv("../../data/results/languages_to_explore.csv", index_col=0, sep=";")
-    storing_path = "../../data/verbling/"
-    done = set(["Arabic", "Chinese", "Dutch", "English", "French", "German", "Greek", "Hebrew"])
+    languges_of_interest = pd.read_csv(os.path.join(DATA_PATH, "results/languages_to_explore.csv"), index_col=0, sep=";")
+    storing_path = os.path.join(DATA_PATH, "verbling/")
 
     # Transform number_italki
     languges_of_interest['number_verbling'] = languges_of_interest['number_verbling'].apply(lambda x: x if x <= 1000 else 1000)

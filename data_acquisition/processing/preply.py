@@ -295,17 +295,17 @@ def map_nationality(df):
     df = df.rename(columns={'nationality': 'nationality_full'})
     df = pd.merge(df, codes, how='left', left_on='nationality_full', right_on='Name')
     df = df.drop(columns='Name').rename(columns={'Code': 'nationality'})
-    df[df['nationality'].isnull()][['nationality', 'nationality_full']].drop_duplicates().to_csv('/Users/javi/Desktop/Universidad/TFG/online-tutoring-analysis/data/wrong_codes.csv', mode='a', header=False)
+    df[df['nationality'].isnull()][['nationality', 'nationality_full']].drop_duplicates().to_csv(os.path.join(DATA_PATH, '/wrong_codes.csv'), mode='a', header=False)
     return df
 
 
 def main():
-    list_path = "/Users/javi/Desktop/Universidad/TFG/online-tutoring-analysis/data/preply/teachers_list/"
-    html_path = "/Users/javi/Desktop/Universidad/TFG/online-tutoring-analysis/data/preply/teachers_html/"
-    output_path = "/Users/javi/Desktop/Universidad/TFG/online-tutoring-analysis/data/preply/results/"
+    list_path = os.path.join(DATA_PATH, "preply/teachers_list/")
+    html_path = os.path.join(DATA_PATH, "preply/teachers_html/")
+    output_path = os.path.join(DATA_PATH, "preply/results/")
 
     languages = set([lang for lang in os.listdir(list_path) if not lang.startswith('.')])
-    done = set([name for name in os.listdir("../../data/preply/results/")])
+    done = set([name for name in os.listdir(os.path.join(DATA_PATH, "preply/results/"))])
 
     for language in languages-done:
         df = visit_language(list_path, html_path, language)

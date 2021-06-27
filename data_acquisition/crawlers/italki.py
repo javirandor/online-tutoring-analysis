@@ -9,6 +9,7 @@ from pathlib import Path
 import time
 from math import ceil
 from random import uniform
+from constants import *
 
 
 def get_languages():
@@ -100,12 +101,12 @@ def run_crawler(languages, crawling_size):
     for language in languages_filtered:
         info = get_teachers_info(languages_filtered[language]['code'], to_crawl=crawling_size[language])
         if info:
-            store_info(info, "../../data/italki/teachers/{}/".format(language), datetime.date.today().strftime("%Y%m%d")+".json")
+            store_info(info, os.path.join(DATA_PATH, "italki/teachers/{}/".format(language)), datetime.date.today().strftime("%Y%m%d")+".json")
         time.sleep(3)
 
 
 if __name__ == "__main__":
-    languges_of_interest = pd.read_csv("../../data/results/languages_to_explore.csv", index_col=0, sep=";")
+    languges_of_interest = pd.read_csv(os.path.join(DATA_PATH, "results/languages_to_explore.csv"), index_col=0, sep=";")
     languges_of_interest["max_teachers"] = languges_of_interest[["number_italki", "number_preply", "number_verbling"]].max(axis=1)
 
     # Transform number_italki

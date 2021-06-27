@@ -4,6 +4,7 @@ import json
 from processing.utils import infer_gender_image, infer_gender_name, download_images, consolidate_gender
 from pathlib import Path
 import datetime
+from constants import *
 
 
 def read_data(data_path: str, language: str):
@@ -47,8 +48,8 @@ def build_image_url(df, image_id_column):
 
 
 def main():
-    data_path = "/Users/javi/Desktop/Universidad/TFG/online-tutoring-analysis/data/italki/teachers/"
-    output_path = "/Users/javi/Desktop/Universidad/TFG/online-tutoring-analysis/data/italki/results/"
+    data_path = DATA_PATH + "italki/teachers/"
+    output_path = DATA_PATH + "italki/results/"
 
     languages = set([lang for lang in os.listdir(data_path) if not lang.startswith('.')])
     done = set([name for name in os.listdir(output_path)])
@@ -62,30 +63,3 @@ def main():
 if __name__ == "__main__":
 
     main()
-
-    """
-    data_path = "/Users/javirando/Desktop/Universidad/TFG/online-tutoring-analysis/data/italki/"
-    img_path = data_path+"images/avatar/"
-    teachers_file_prefix='italki_teachers'
-
-    # Read json data
-    data = read_data(data_path, teachers_file_prefix)
-
-    # Transform data into pandas
-    dfs = json_to_pandas(data)
-
-    i = 1
-    for df in dfs:
-        # Build image url
-        df = build_image_url(df, "avatar_file_name")
-
-        # Infer gender
-        df_gender = infer_gender(df=df, column_name='user_name', prob_bound=0.75, images_path=img_path)
-
-        # Consolidate gender
-        df_gender = consolidate_gender(df=df_gender, gender_img_column='gender_img', gender_name_column='gender_name', gender_name_prob='gender_name_prob', prob_bound=0.75)
-
-        df_gender.to_csv("/Users/javirando/Desktop/Universidad/TFG/online-tutoring-analysis/data/results/italki_english_{}.csv".format(i))
-
-        i = i+1
-        """

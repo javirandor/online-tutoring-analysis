@@ -12,6 +12,8 @@ from random import uniform
 from selenium.webdriver.common.keys import Keys
 from bs4 import BeautifulSoup
 import re
+import os
+from constants import DATA_PATH
 
 
 def get_languages(bot):
@@ -146,9 +148,9 @@ def run_crawler(languages_url, crawling_size, storing_path, done=set([])):
 
 
 def main():
-    languges_of_interest = pd.read_csv("../../data/results/languages_to_explore.csv", index_col=0, sep=";")
-    storing_path = "../../data/preply/"
-    done = set([name for name in os.listdir("../../data/preply/teachers_list/")])
+    languges_of_interest = pd.read_csv(os.path.join(DATA_PATH, "results/languages_to_explore.csv"), index_col=0, sep=";")
+    storing_path = os.path.join(DATA_PATH, "preply/")
+    done = set([name for name in os.listdir(os.path.join(DATA_PATH, "preply/teachers_list/"))])
 
     # Transform number_italki
     languges_of_interest['number_preply'] = languges_of_interest['number_preply'].apply(
